@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+/* ===============================
+   VARIABLES
+   =============================== */
+
+:root {
+  --color-bg: #2B0A4E;
+  --color-navbar: #F8B400;
+  --color-board-line: #A77EE1;
+
+  --color-text-primary: #2B0A4E;
+  --color-text-secondary: #D8D8D8;
+
+  --color-accent: #F8B400;
+  --color-accent-hover: #FFCB2D;
+
+  --color-btn: #ffbb00;
+  --color-btn-hover: #FFCB2D;
+  --color-btn-text: #1E1F2F;
+
+}
+
+
+/* ===============================
+   RESET & BASE
+   =============================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('../images/background.svg');
+    background-size: cover;
+    background-repeat: repeat;
+    color: var(--color-text-secondary);
+}
+
+
+/* ===============================
+   NAVBAR
+   =============================== */
+#navbar {
+    background-color: var(--color-navbar);
+    color: var(--color-text-primary);
+    height: 60px !important;
+}
+
+#brand {
+    color: var(--color-text-primary);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(248, 180, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+#brand:hover {
+    text-shadow: 0px 0px 10px var(--color-text-secondary);
+    transform: scale(1.05);
+}
+
+
+/* ===============================
+   LAYOUT PRINCIPAL
+   =============================== */
+#main-container {
+    padding-top: 60px;
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ===============================
+   SELECCIÓN DE DIFICULTAD
+   =============================== */
+#difficulty-button-group {
+    width: 250px;
+    gap: 10px;
+}
+
+.btn-difficulty {
+    min-width: 100px;
+    flex: 1;
+    text-align: center;
+    background-color: var(--color-btn) !important;
+    color: var(--color-btn-text);
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-difficulty:hover {
+    background-color: var(--color-btn-hover) !important;
+    transform: scale(1.05);
+}
+
+
+/* ===============================
+   TABLERO DE JUEGO
+   =============================== */
+#board-container {
+    width: 100%;
+    padding: 2% 5%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    aspect-ratio: 1 / 1;
+    width: min(70vw, 70vh);
+    max-width: 75vmin;
+    max-height: 75vmin;
+}
+
+.square:hover {
+    background-color: var(--color-accent-hover);
+    opacity: 30%;
+    transform: scale(1.05);
+}
+
+.square {
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 1 / 1;
+    font-size: 10vmin !important;
+    font-weight: bold;
+    border: 2px solid #A77EE1 !important;
+    background-color: transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    
+}
+
+/* ===============================
+   BOTONES DE JUEGO
+   =============================== */
+#game-manager-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.btn-round {
+    width: 80px;
+    height: 80px;
+    border-radius: 50% !important;
+    background-color:var(--color-btn) !important;
+    color: #2d1449 !important; /* contraste con fondo */
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-round:hover {
+    background-color: #e0a000;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+/* ===============================
+   INDICADOR DE TURNO
+   =============================== */
+#turn-indicator {
+    font-size: 1.5rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* ===============================
+   MEDIA QUERIES
+   =============================== */
+@media (max-width: 600px) {
+    #board {
+        width: 90vw;
+        max-width: none;
+        max-height: none;
+    }
+
+    .btn-round {
+        width: 60px;
+        height: 60px;
+        font-size: 40px;
+    }
+
+    #turn-indicator {
+        font-size: 1.2rem;
+    }
+
+    #difficulty-button-group {
+        width: 100%;
+        flex-direction: column;
+    }
+}
